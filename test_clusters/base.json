@@ -1,0 +1,53 @@
+{
+    "env": {},
+    "apiModel": {
+        "apiVersion": "vlabs",
+        "location": "westus2",
+        "properties": {
+            "orchestratorProfile": {
+                "orchestratorType": "Kubernetes",
+                "orchestratorRelease": "1.15",
+                "orchestratorVersion": "1.15.10",
+                "kubernetesConfig": {
+                    "networkPlugin": "kubenet",
+                    "useInstanceMetadata": false
+                }
+            },
+            "masterProfile": {
+                "count": 1,
+                "dnsPrefix": "",
+                "vmSize": "Standard_D2_v2",
+                "distro": "ubuntu"
+            },
+            "agentPoolProfiles": [
+                {
+                    "name": "linuxpool",
+                    "count": 1,
+                    "vmSize": "Standard_D2_v2",
+                    "availabilityProfile": "AvailabilitySet",
+                    "distro": "ubuntu",
+                    "acceleratedNetworkingEnabled": false
+                }
+            ],
+            "linuxProfile": {
+                "adminUsername": "azureuser",
+                "ssh": {
+                    "publicKeys": [
+                        {
+                            "keyData": ""
+                        }
+                    ]
+                }
+            },
+            "servicePrincipalProfile": {
+                "clientId": "",
+                "secret": ""
+            },
+            "customCloudProfile": {
+                "identitySystem": "",
+                "authenticationMethod": "client_secret",
+                "portalURL": ""
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "env": {
+        "SCALE_CLUSTER": true,
+        "UPGRADE_CLUSTER": true,
+        "GET_CLUSTER_LOGS": true,
+        "CREATE_VNET": true,
+        "UPGRADE_VERSIONS": "1.23.45",
+        "GINKGO_FOCUS": "should apply various network policies",
+        "SKIP_TESTS": "true",
+        "GINKGO_SKIP": "should report all nodes in a Ready state",
+        "TEST_PVC": true,
+        "UPGRADE_FORK": "jadarsie",
+        "UPGRADE_BRANCH": "wip"
+    },
+    "apiModel": {}
+}
