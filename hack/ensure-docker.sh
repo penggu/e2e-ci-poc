@@ -3,6 +3,7 @@
 set -o errexit
 set -o nounset
 set -o pipefail
+set -o xtrace
 
 installMoby() {
   UBUNTU_RELEASE=$(lsb_release -r -s)

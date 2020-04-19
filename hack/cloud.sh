@@ -1,7 +1,9 @@
 #!/bin/bash
 
+set -o errexit
 set -o nounset
 set -o pipefail
+set -o xtrace
 
 METADATA=$(mktemp)
 curl -sk -o ${METADATA} "https://management.${AZURE_LOCATION}.${CLOUD_FQDN}/metadata/endpoints?api-version=2015-01-01"

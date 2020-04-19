@@ -3,6 +3,7 @@
 set -o errexit
 set -o nounset
 set -o pipefail
+set -o xtrace
 
 ensure_package() {
     if ! [ -x "$(command -v ${2})" ]; then
