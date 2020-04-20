@@ -8,20 +8,19 @@ set -o xtrace
 installMoby() {
   UBUNTU_RELEASE=$(lsb_release -r -s)
   curl -s https://packages.microsoft.com/config/ubuntu/${UBUNTU_RELEASE}/prod.list >/tmp/microsoft-prod.list
-  cp /tmp/microsoft-prod.list /etc/apt/sources.list.d/
+  sudo cp /tmp/microsoft-prod.list /etc/apt/sources.list.d/
   curl -s https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >/tmp/microsoft.gpg
-  cp /tmp/microsoft.gpg /etc/apt/trusted.gpg.d/
-  apt-get update
-  apt-get install -y moby-engine moby-cli
-  groupadd docker
-  usermod -aG docker $USER
+  sudo cp /tmp/microsoft.gpg /etc/apt/trusted.gpg.d/
+  sudo apt-get update
+  sudo apt-get install -y moby-engine moby-cli
+  sudo usermod -aG docker $USER
 }
 
 ensure_docker() {
   if ! [ -x "$(command -v docker)" ]; then
     if [[ "${OSTYPE}" == "linux-gnu" ]]; then
       echo "docker not found, installing"
-      sudo installMoby
+      installMoby
     else
       echo "Missing required binary in path: $2"
       return 2

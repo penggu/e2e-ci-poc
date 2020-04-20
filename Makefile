@@ -1,11 +1,11 @@
 INPUT := env/input.env
 
-.PHONY: setup
-setup:
+.PHONY: setup-dvm
+setup-dvm:
 	scripts/upload.sh $(INPUT)
 
-.PHONY: run
-run:
+.PHONY: run-dvm
+run-dvm:
 	scripts/run-dvm.sh $(INPUT)
 
 .PHONY: run-local

@@ -19,7 +19,7 @@ ensure_package() {
 }
 
 ensure_package jq jq
-
-# ensure_package python3-pip pip3
-# pip3 install -U certifi
+ensure_package git git
+ensure_package python3-pip pip3
+pip3 install -U certifi
 # CERT=$(python3 -c "import certifi; print(certifi.where())"); echo $CERT

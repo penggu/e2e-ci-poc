@@ -16,7 +16,7 @@ KNOWN_HOSTS_OPTIONS='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
 scp -i ${SSH_PRIVATE_KEY} ${KNOWN_HOSTS_OPTIONS} $1 azureuser@${DVM_HOST}:~/input.env &
 wait
 
-scp -i ${SSH_PRIVATE_KEY} ${KNOWN_HOSTS_OPTIONS} ${REPO_ROOT}/scripts/setup.sh azureuser@${DVM_HOST}:~/setup.sh &
+scp -i ${SSH_PRIVATE_KEY} ${KNOWN_HOSTS_OPTIONS} ${REPO_ROOT}/scripts/setup-dvm.sh azureuser@${DVM_HOST}:~/setup-dvm.sh &
 wait
 
-ssh -q -t -i ${SSH_PRIVATE_KEY} ${KNOWN_HOSTS_OPTIONS} azureuser@${DVM_HOST} "sudo chmod +x ~/setup.sh; ~/setup.sh"
+ssh -q -t -i ${SSH_PRIVATE_KEY} ${KNOWN_HOSTS_OPTIONS} azureuser@${DVM_HOST} "sudo chmod +x ~/setup-dvm.sh; ~/setup-dvm.sh"

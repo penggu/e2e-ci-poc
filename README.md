@@ -3,15 +3,13 @@
 ## Run locally
 
 ```bash
-export INPUT=env/sample.env
-make run-local
+make run-local INPUT=env/sample.env
 ```
 
 ## Run on DVM
 
 ```bash
-export INPUT=env/sample.env
-make setup
-make run
-make results
+make setup INPUT=env/sample.env
+make run INPUT=env/sample.env
+make results INPUT=env/sample.env
 ```
