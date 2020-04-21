@@ -2,7 +2,7 @@
     "env": {},
     "apiModel": {
         "apiVersion": "vlabs",
-        "location": "westus2",
+        "location": "",
         "properties": {
             "orchestratorProfile": {
                 "orchestratorType": "Kubernetes",
@@ -15,7 +15,7 @@
                 }
             },
             "masterProfile": {
-                "count": 1,
+                "count": 3,
                 "dnsPrefix": "",
                 "vmSize": "Standard_D2_v2",
                 "distro": "aks-ubuntu-16.04"
@@ -23,7 +23,7 @@
             "agentPoolProfiles": [
                 {
                     "name": "linuxpool",
-                    "count": 2,
+                    "count": 3,
                     "vmSize": "Standard_D2_v2",
                     "availabilityProfile": "AvailabilitySet",
                     "distro": "aks-ubuntu-16.04",

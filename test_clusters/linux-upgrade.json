@@ -1,13 +1,16 @@
 {
-    "env": {},
+    "env": {
+        "UPGRADE_CLUSTER": true,
+        "SKIP_TESTS": true
+    },
     "apiModel": {
         "apiVersion": "vlabs",
         "location": "",
         "properties": {
             "orchestratorProfile": {
                 "orchestratorType": "Kubernetes",
-                "orchestratorRelease": "1.15",
-                "orchestratorVersion": "1.15.10",
+                "orchestratorRelease": "1.14",
+                "orchestratorVersion": "1.14.7",
                 "kubernetesConfig": {
                     "networkPlugin": "kubenet",
                     "useInstanceMetadata": false
@@ -21,12 +24,12 @@
             },
             "agentPoolProfiles": [
                 {
-                    "name": "windowspool",
+                    "name": "linuxpool",
                     "count": 3,
                     "vmSize": "Standard_D2_v2",
-                    "osType": "Windows",
                     "availabilityProfile": "AvailabilitySet",
-                    "AcceleratedNetworkingEnabled": false
+                    "distro": "aks-ubuntu-16.04",
+                    "acceleratedNetworkingEnabled": false
                 }
             ],
             "linuxProfile": {
@@ -38,11 +41,6 @@
                         }
                     ]
                 }
-            },
-            "windowsProfile": {
-                "adminUsername": "azureuser",
-                "adminPassword": "",
-                "sshEnabled": true
             },
             "servicePrincipalProfile": {
                 "clientId": "",

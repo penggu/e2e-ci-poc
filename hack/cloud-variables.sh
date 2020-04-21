@@ -8,12 +8,6 @@ set -o xtrace
 METADATA=$(mktemp)
 curl -sk -o ${METADATA} "https://management.${AZURE_LOCATION}.${CLOUD_FQDN}/metadata/endpoints?api-version=2015-01-01"
 
-echo export API_PROFILE=\"2019-03-01-hybrid\"
-echo export ENVIRONMENT_NAME=\"AzureStackCloud\"
-echo export AUTHENTICATION_METHOD=\"client_secret\"
-echo export ORCHESTRATOR=\"kubernetes\"
-echo export AZURE_ENV=\"AzureStackCloud\"
-
 echo export LOCATION=\"$AZURE_LOCATION\"
 echo export REGION_OPTIONS=\"$AZURE_LOCATION\"
 echo export CLIENT_ID=\"$AZURE_CLIENT_ID\"
