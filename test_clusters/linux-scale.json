@@ -1,7 +1,7 @@
 {
     "env": {
-        "UPGRADE_CLUSTER": true,
-        "SKIP_TESTS_AFTER_UPGRADE": false
+        "SCALE_CLUSTER": true,
+        "SKIP_TESTS_AFTER_SCALE_UP": false
     },
     "apiModel": {
         "apiVersion": "vlabs",
@@ -9,8 +9,8 @@
         "properties": {
             "orchestratorProfile": {
                 "orchestratorType": "Kubernetes",
-                "orchestratorRelease": "1.14",
-                "orchestratorVersion": "1.14.7",
+                "orchestratorRelease": "1.15",
+                "orchestratorVersion": "1.15.10",
                 "kubernetesConfig": {
                     "networkPlugin": "kubenet",
                     "useInstanceMetadata": false
