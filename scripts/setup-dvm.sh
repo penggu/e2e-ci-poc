@@ -5,7 +5,7 @@ set -o nounset
 set -o pipefail
 set -o xtrace
 
-git clone https://github.com/jadarsie/e2e-ci-poc -b one-time
+git clone https://github.com/jadarsie/e2e-ci-poc -b master
 
 REPO_ROOT=e2e-ci-poc
 source "${REPO_ROOT}/hack/ensure-packages.sh"

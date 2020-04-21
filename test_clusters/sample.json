@@ -1,0 +1,56 @@
+{
+    "env": {
+        "UPGRADE_CLUSTER": true,
+        "SKIP_TESTS": true
+    },
+    "apiModel": {
+        "apiVersion": "vlabs",
+        "location": "",
+        "properties": {
+            "orchestratorProfile": {
+                "orchestratorType": "Kubernetes",
+                "orchestratorRelease": "1.14",
+                "orchestratorVersion": "1.14.7",
+                "kubernetesConfig": {
+                    "networkPlugin": "kubenet",
+                    "useInstanceMetadata": false
+                }
+            },
+            "masterProfile": {
+                "count": 3,
+                "dnsPrefix": "",
+                "vmSize": "Standard_D2_v2",
+                "distro": "aks-ubuntu-16.04"
+            },
+            "agentPoolProfiles": [
+                {
+                    "name": "linuxpool",
+                    "count": 3,
+                    "vmSize": "Standard_D2_v2",
+                    "availabilityProfile": "AvailabilitySet",
+                    "distro": "aks-ubuntu-16.04",
+                    "acceleratedNetworkingEnabled": false
+                }
+            ],
+            "linuxProfile": {
+                "adminUsername": "azureuser",
+                "ssh": {
+                    "publicKeys": [
+                        {
+                            "keyData": ""
+                        }
+                    ]
+                }
+            },
+            "servicePrincipalProfile": {
+                "clientId": "",
+                "secret": ""
+            },
+            "customCloudProfile": {
+                "identitySystem": "",
+                "authenticationMethod": "client_secret",
+                "portalURL": ""
+            }
+        }
+    }
+}
