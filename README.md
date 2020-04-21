@@ -13,6 +13,21 @@ Compose a `.json` file with your cluster definition and variables overrides. Var
 ## Run locally
 
 Requires `docker`, `azure-cli`, `git`, `bash` & `jq`.
+if not available, run the following command in elevated powershell window:
+```powershell
+# 1.1 On Windows DVM, launch Powershell as Administrator
+# 1.2 Change Powershell security policy
+Set-ExecutionPolicy Bypass -Scope Process -Force
+# 1.3 Enable TLS
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+# 1.4 Download and install chocolatey
+iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+# 1.5 Use chocolately to install packages
+choco install docker -y
+choco install azure-cli -y
+choco install git.install --params "/GitAndUnixToolsOnPath /NoGitLfs /SChannel /NoAutoCrlf" -y
+choco install jq -y
+```
 
 ```bash
 make run-local INPUT=env/sample.env
