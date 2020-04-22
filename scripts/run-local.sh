@@ -11,4 +11,4 @@ cd "${REPO_ROOT}" || exit 1
 # source input.env
 source $1
 
-${REPO_ROOT}/scripts/e2e.sh
+${REPO_ROOT}/scripts/run.sh
