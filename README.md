@@ -12,7 +12,7 @@ Compose a `.json` file with your cluster definition and variables overrides. Var
 
 ## Run locally
 
-Requires `docker`, `azure-cli`, `git`, `bash` & `jq`.
+Requires `docker`, `azure-cli`, `git`, `bash` & `jq`. Make sure you can reach Azure Stack's metadata endpoint.
 
 ```bash
 make run-local INPUT=env/sample.env
