@@ -16,12 +16,13 @@ echo export SUBSCRIPTION_ID=\"$AZURE_SUBSCRIPTION_ID\"
 echo export TENANT_ID=\"$AZURE_TENANT_ID\"
 echo export CUSTOM_CLOUD_CLIENT_ID=\"$AZURE_CLIENT_ID\"
 echo export CUSTOM_CLOUD_SECRET=\"$AZURE_CLIENT_SECRET\"
+echo export IDENTITY_SYSTEM=\"$IDENTITY_SYSTEM\"
 
 echo export PORTAL_ENDPOINT=\"https://portal.${AZURE_LOCATION}.${CLOUD_FQDN}\"
 echo export RESOURCE_MANAGER_ENDPOINT=\"https://management.${AZURE_LOCATION}.${CLOUD_FQDN}\"
 
 echo export SERVICE_MANAGEMENT_ENDPOINT=\"$(jq -r '.authentication.audiences | .[0]' "$METADATA")\"
-echo export ACTIVE_DIRECTORY_ENDPOINT=\"$(jq -r .authentication.loginEndpoint "$METADATA" | sed -e 's/adfs\/*$//')\"
+echo export ACTIVE_DIRECTORY_ENDPOINT=\"$(jq -r .authentication.loginEndpoint "$METADATA")\" # | sed -e 's/adfs\/*$//'
 echo export GALLERY_ENDPOINT=\"$(jq -r .galleryEndpoint "$METADATA")\"
 echo export GRAPH_ENDPOINT=\"$(jq -r .graphEndpoint "$METADATA")\"
 echo export KEY_VAULT_DNS_SUFFIX=\"".vault.${AZURE_LOCATION}.${CLOUD_FQDN}"\"
