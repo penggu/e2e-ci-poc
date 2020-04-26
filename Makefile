@@ -15,3 +15,5 @@ run-local:
 .PHONY: results
 results:
 	scripts/results.sh $(INPUT)
+
+include packer.mk

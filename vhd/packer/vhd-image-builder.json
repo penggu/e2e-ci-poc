@@ -1,0 +1,86 @@
+{
+    "variables": {
+        "client_id": "{{env `AZURE_CLIENT_ID`}}",
+        "client_secret": "{{env `AZURE_CLIENT_SECRET`}}",
+        "tenant_id": "{{env `AZURE_TENANT_ID`}}",
+        "subscription_id": "{{env `AZURE_SUBSCRIPTION_ID`}}",
+        "location": "{{env `AZURE_LOCATION`}}",
+        "vm_size": "{{env `AZURE_VM_SIZE`}}",
+        "build_number": "{{env `BUILD_NUMBER`}}",
+        "build_id": "{{env `BUILD_ID`}}",
+        "commit": "{{env `GIT_VERSION`}}",
+        "feature_flags": "{{env `FEATURE_FLAGS`}}",
+        "ubuntu_sku": "{{env `UBUNTU_SKU`}}"
+    },
+    "builders": [
+        {
+            "type": "azure-arm",
+            "client_id": "{{user `client_id`}}",
+            "client_secret": "{{user `client_secret`}}",
+            "tenant_id": "{{user `tenant_id`}}",
+            "subscription_id": "{{user `subscription_id`}}",
+            "resource_group_name": "{{user `resource_group_name`}}",
+            "capture_container_name": "aksengine-vhds",
+            "capture_name_prefix": "aksengine-{{user `create_time`}}",
+            "storage_account": "{{user `storage_account_name`}}",
+            "os_type": "Linux",
+            "os_disk_size_gb": 30,
+            "image_publisher": "Canonical",
+            "image_offer": "UbuntuServer",
+            "image_sku": "{{user `ubuntu_sku`}}-LTS",
+            "image_version": "latest",
+            "azure_tags": {
+                "os": "Linux",
+                "now": "{{user `create_time`}}",
+                "createdBy": "aks-engine-vhd-pipeline"
+            },
+            "location": "{{user `location`}}",
+            "vm_size": "{{user `vm_size`}}"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "file",
+            "source": "hack/ensure-packages.sh",
+            "destination": "/home/packer/ensure-packages.sh"
+        },
+        {
+            "type": "file",
+            "source": "hack/ensure-docker.sh",
+            "destination": "/home/packer/ensure-docker.sh"
+        },
+        {
+            "type": "file",
+            "source": "hack/ensure-azcli.sh",
+            "destination": "/home/packer/ensure-azcli.sh"
+        },
+        {
+            "type": "file",
+            "source": "vhd/packer/cleanup-vhd.sh",
+            "destination": "/home/packer/cleanup-vhd.sh"
+        },
+        {
+            "type": "file",
+            "source": "scripts/setup-vhd.sh",
+            "destination": "/home/packer/setup-vhd.sh"
+        },
+        {
+            "type": "file",
+            "source": "env/packer.env",
+            "destination": "/home/packer/packer.env"
+        },
+        {
+            "type": "shell",
+            "inline": [
+                "sudo /bin/bash -ux /home/packer/setup-vhd.sh"
+            ]
+        },
+        {
+            "type": "shell",
+            "inline": [
+                "sudo /bin/bash -eux /home/packer/cleanup-vhd.sh",
+                "sudo /usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync || exit 125"
+            ]
+        }
+    ]
+}

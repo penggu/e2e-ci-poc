@@ -9,6 +9,7 @@ ensure_package() {
     if ! [ -x "$(command -v ${2})" ]; then
         if [[ "${OSTYPE}" == "linux-gnu" ]]; then
             echo "${2} not found, installing"
+            export DEBIAN_FRONTEND=noninteractive
             sudo apt-get update
             sudo apt-get install -y $1
         else

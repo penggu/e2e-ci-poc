@@ -6,8 +6,10 @@ set -o pipefail
 set -o xtrace
 
 ensure() {
-  sudo cp /var/lib/waagent/Certificates.pem /usr/local/share/ca-certificates/azsCertificate.crt
-  sudo update-ca-certificates
+  if [ -f /var/lib/waagent/Certificates.pem ]; then
+    sudo cp /var/lib/waagent/Certificates.pem /usr/local/share/ca-certificates/azsCertificate.crt
+    sudo update-ca-certificates
+  fi
 }
 
 ensure

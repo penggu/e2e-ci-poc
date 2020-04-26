@@ -17,9 +17,9 @@ register() {
     --endpoint-resource-manager $RESOURCE_MANAGER_ENDPOINT \
     --endpoint-vm-image-alias-doc $VM_IMAGES \
     --suffix-storage-endpoint $STORAGE_ENDPOINT_SUFFIX \
-    --suffix-keyvault-dns $KEY_VAULT_DNS_SUFFIX
+    --suffix-keyvault-dns $KEY_VAULT_DNS_SUFFIX \
+    --profile $API_PROFILE
 }
 
 register
 az cloud set -n $CLOUD_AZCLI_NAME
-az cloud update --profile $API_PROFILE
