@@ -10,6 +10,7 @@
                 "orchestratorVersion": "1.15.10",
                 "kubernetesConfig": {
                     "networkPlugin": "azure",
+                    "networkPolicy": "azure",
                     "useInstanceMetadata": false
                 }
             },
