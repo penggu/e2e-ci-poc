@@ -1,7 +1,7 @@
 {
     "env": {
         "UPGRADE_CLUSTER": true,
-        "SKIP_TESTS": true
+        "SKIP_TESTS": false
     },
     "apiModel": {
         "apiVersion": "vlabs",
