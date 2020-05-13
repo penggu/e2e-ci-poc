@@ -13,6 +13,7 @@ Compose a `.json` file with your cluster definition and variables overrides. Var
 ## Run locally
 
 Requires `docker`, `azure-cli`, `git`, `bash` & `jq`.
+Make sure you can reach Azure Stack's metadata endpoint.
 if not available, run the following command in elevated powershell window:
 ```powershell
 # 1.1 On Windows DVM, launch Powershell as Administrator

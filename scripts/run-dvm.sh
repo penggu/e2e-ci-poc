@@ -13,4 +13,4 @@ source $1
 
 KNOWN_HOSTS_OPTIONS='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR'
 
-ssh -t -i ${SSH_PRIVATE_KEY} ${KNOWN_HOSTS_OPTIONS} azureuser@${DVM_HOST} "source ~/input.env; ~/e2e-ci-poc/scripts/e2e.sh"
+ssh -t -i ${SSH_PRIVATE_KEY} ${KNOWN_HOSTS_OPTIONS} azureuser@${DVM_HOST} "source ~/input.env; ~/scripts/run.sh"

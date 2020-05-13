@@ -5,9 +5,9 @@ set -o nounset
 set -o pipefail
 set -o xtrace
 
-git clone https://github.com/jadarsie/e2e-ci-poc -b master
+REPO_ROOT=$(dirname "${BASH_SOURCE[0]}")/..
+cd "${REPO_ROOT}" || exit 1
 
-REPO_ROOT=e2e-ci-poc
 source "${REPO_ROOT}/hack/ensure-packages.sh"
 source "${REPO_ROOT}/hack/ensure-docker.sh"
 source "${REPO_ROOT}/hack/ensure-azcli.sh"
