@@ -5,14 +5,15 @@
     },
     "apiModel": {
         "apiVersion": "vlabs",
-        "location": "",
+        "location": "redmond",
         "properties": {
             "orchestratorProfile": {
                 "orchestratorType": "Kubernetes",
                 "orchestratorRelease": "1.15",
-                "orchestratorVersion": "1.15.10",
+                "orchestratorVersion": "1.15.12",
                 "kubernetesConfig": {
-                    "networkPlugin": "kubenet",
+                    "networkPlugin": "azure",
+                    "networkPolicy": "azure",
                     "useInstanceMetadata": false
                 }
             },
@@ -20,7 +21,7 @@
                 "count": 3,
                 "dnsPrefix": "",
                 "vmSize": "Standard_D2_v2",
-                "distro": "aks-ubuntu-16.04"
+                "distro": "ubuntu"
             },
             "agentPoolProfiles": [
                 {
@@ -28,7 +29,7 @@
                     "count": 3,
                     "vmSize": "Standard_D2_v2",
                     "availabilityProfile": "AvailabilitySet",
-                    "distro": "aks-ubuntu-16.04",
+                    "distro": "ubuntu",
                     "acceleratedNetworkingEnabled": false
                 }
             ],
@@ -37,19 +38,24 @@
                 "ssh": {
                     "publicKeys": [
                         {
-                            "keyData": ""
+                            "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2LxmQQB4FLEWcmUekSGf5GN9H1y/uZWtL7oCkU9O2FABPVXE2PEo6B2kjq2fboBkgR40kovVaviSmhM1m6hhavLcb2y9s82kaoQHfgC7LWJN7eVzpEZ3b9VtAKLELx27ZNrEk9w41JOTIXnbpfvX4KC49x8m96jwNwjJ7BHZKrEclNegsGDP5ZH53FMBbIRS93ZwzBosGVbo/xOb75X05Xhc9CryDefCTu90sLHxfQxO18x848FCiry5/BYDMQeV8GAdDNxSeimyJV7ZlgkSMfmAl3NUBoOeoy7M/ua/WUzQdOrjNDGxRm/kskHLpPf/E+P9gfMpkN7sgcCoEv5F5 administrator@n31r1209-DVM"
                         }
                     ]
                 }
+            },
+            "windowsProfile": {
+                "adminUsername": "azureuser",
+                "adminPassword": "diujerxl#sjajo2@#disjj29Sjdxlsf2#ijd",
+                "sshEnabled": true
             },
             "servicePrincipalProfile": {
                 "clientId": "",
                 "secret": ""
             },
             "customCloudProfile": {
-                "identitySystem": "",
+                "identitySystem": "azure_ad",
                 "authenticationMethod": "client_secret",
-                "portalURL": ""
+                "portalURL": "https://portal.redmond.ext-n31r1209.masd.stbtest.microsoft.com/"
             }
         }
     }
